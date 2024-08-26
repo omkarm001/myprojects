@@ -1,0 +1,25 @@
+install.packages('palmerpenguins')
+library(palmerpenguins)
+
+data(package = 'palmerpenguins')
+
+install.packages('tidyverse')
+library('tidyverse')
+
+head(penguins)
+str(penguins)
+
+install.packages("ggplot2")
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point()
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(colour = "red")
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species))
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species))
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species)) + facet_wrap(~species)
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species)) + facet_wrap(~species) + labs(title = "Palmer Penguins : Body Mass v/s Flipper Length")
+
+install.packages("rmarkdown") 
