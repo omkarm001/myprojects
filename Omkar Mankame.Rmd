@@ -1,0 +1,120 @@
+---
+title: "Case Study – Palmer Penguins"
+author: "Omkar Mankame"
+date: "2024-08-26"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+## R Case Study
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents.
+
+About the case study -
+•	R library has Palmer Penguins dataset which has three species of penguins with different parameters like flipper length, height, weight, etc.
+•	The data set has 344 datapoints.
+
+
+------------------------------
+#Data sets in package ‘palmerpenguins’:
+
+penguins                  Size measurements for adult foraging penguins near
+                          Palmer Station, Antarctica
+
+penguins_raw (penguins)   Penguin size, clutch, and blood isotope data for
+                          foraging adults near Palmer Station, Antarctica
+------------------------------
+
+
+•	The aim of this project is to find the relation between flipper length and body mass. A guess would be larger the flipper length more the body mass.
+•	The same prediction was analyzed using R scattered plot to find the correlation.
+
+
+
+
+# Step 1 
+The Penguins Dataset in R Studio can be installed using install.packages(‘palmerpenguins’) and then using it by library(‘palmerpenguins’)
+```{r}
+install.packages('palmerpenguins')
+```
+
+# Step 2 
+To use the dataset use the code below.
+```{r}
+library(palmerpenguins)
+data(package = 'palmerpenguins')
+```
+
+# Step 3
+Install additional packages for data analysis – tidyvers which contains ggplot2, dplyr, facets, etc.
+```{r}
+install.packages('tidyverse')
+library('tidyverse')
+```
+
+# Step 4
+Know your data set – Head gives 6 rows and 8 columns, str shows the internal structure of the dataframe. 
+```{r}
+head(penguins)
+str(penguins)
+```
+
+# Step 5
+Installed ggplot2 package
+```{r}
+install.packages("ggplot2")
+```
+
+# Step 6
+Created a scattered plot to show the relation between flipper length and body mass.
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point()
+```
+
+# Step 7
+To change the color of the scattered point to red
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(colour = "red")
+```
+
+# Step 8
+To mark different colors for different species
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species))
+```
+The plot shows that Gentoo penguins are the largest. R has created automatic legends for the plot to help us understand the color coding.
+
+# Step 9
+To create different colors and shapes for different species in the scattered plot shape was added in aesthetics.
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species))
+```
+
+# Step 10 
+Now the subsets of the plot were created for each species using facet wrap.
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species)) + facet_wrap(~species)
+```
+
+# Step 11
+Now a title was given to our plots 
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + geom_point(aes(colour = species, shape = species)) + facet_wrap(~species) + labs(title = "Palmer Penguins : Body Mass v/s Flipper Length")
+```
+
+# Step 12
+The analysis was then saved using R Markdown. It is a tool to document analysis in Rstudio.
+First the package was installed
+```{r}
+install.packages("rmarkdown")
+```
+
+
+
+
+
+
+
+
